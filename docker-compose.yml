@@ -1,0 +1,10 @@
+version: '2'
+services:
+  header-service:
+    build: header-service
+    ports:
+     - "5000:80"
+  hosting-app-a:
+    build: hosting-app-a
+    ports:
+     - "5010:8080"
