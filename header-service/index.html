@@ -1,4 +1,10 @@
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
+
 <template id="header-template">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.js"></script>
+
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
@@ -16,16 +22,16 @@
 <script type="text/javascript">
     var owningDocument = document.currentScript.ownerDocument;
     class PokeHeader extends HTMLElement {
-        connectedCallback() {
-            console.log('connected');
-            this.appendChild(owningDocument.getElementById('header-template').content);
-        }
-
         constructor() {
             super();
+
+            var template = owningDocument.getElementById('header-template');
+            var shadowRoot = this.attachShadow({ mode: 'open' });
+            shadowRoot.appendChild(template.content.cloneNode(true));
 
             console.log('PokeHeader created');
         }
     }
     window.customElements.define('poke-header', PokeHeader);
+
 </script>
